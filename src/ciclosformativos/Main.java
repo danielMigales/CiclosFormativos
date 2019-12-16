@@ -9,13 +9,13 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Conexion ua = null;
+        Conexion bd = null;
         Scanner teclado = new Scanner(System.in);
         boolean salir = true;
 
         try {
 
-            ua = new Conexion();
+            bd = new Conexion();
             do {
                 System.out.println("\n----------------MENU PRINCIPAL-------------\n");
                 System.out.println("1. Crear ciclo formativo nuevo.");
@@ -32,9 +32,14 @@ public class Main {
                 switch (opcion) {
                         
                     case 1:
-                        ua.crearCiclo();
+                        bd.crearCiclo();
                         break;
-                        
+                    case 2:
+                        bd.insertarDatos();
+                        break;
+                    case 3:
+                        bd.editarDatos();
+                        break;
                     case 7:
                         salir = false;
                         break;
@@ -44,8 +49,8 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if (ua != null) {
-                // ua.desconectar();
+            if (bd != null) {
+                bd.desconectar();
             }
         }
     }
